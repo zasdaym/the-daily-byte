@@ -16,6 +16,10 @@ func TestCorrectCapitalization(t *testing.T) {
 			want: true,
 		},
 		{
+			in:   "uS",
+			want: false,
+		},
+		{
 			in:   "USA",
 			want: true,
 		},
