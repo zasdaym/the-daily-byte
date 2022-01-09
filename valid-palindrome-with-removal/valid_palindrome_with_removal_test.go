@@ -28,7 +28,7 @@ func TestPalindromeWithRemoval(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := PalindromeWithRemoval(tt.s); got != tt.want {
-				t.Errorf("IsValidPalindromeWithRemoval(%s) = %v, want %v", tt.s, got, tt.want)
+				t.Errorf("PalindromeWithRemoval(%s) = %v, want %v", tt.s, got, tt.want)
 			}
 		})
 	}
