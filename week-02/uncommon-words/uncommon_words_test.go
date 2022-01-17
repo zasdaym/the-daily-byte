@@ -15,7 +15,7 @@ func TestUncommonWords(t *testing.T) {
 			name: "all words uncommon",
 			a:    "the quick",
 			b:    "brown fox",
-			want: []string{"the", "quick", "brown", "fox"},
+			want: []string{"brown", "fox", "quick", "the"},
 		},
 		{
 			name: "some common words",

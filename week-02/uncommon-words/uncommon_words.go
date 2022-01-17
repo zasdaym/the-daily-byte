@@ -1,6 +1,9 @@
 package uncommonwords
 
-import "strings"
+import (
+	"sort"
+	"strings"
+)
 
 func UncommonWords(first, second string) []string {
 	firstWords := make(map[string]bool)
@@ -23,5 +26,6 @@ func UncommonWords(first, second string) []string {
 			result = append(result, word)
 		}
 	}
+	sort.Strings(result)
 	return result
 }
