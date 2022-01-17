@@ -4,6 +4,24 @@ import (
 	"testing"
 )
 
+func TestNodeString(t *testing.T) {
+	tests := []struct {
+		node *Node
+		want string
+	}{
+		{
+			node: &Node{Value: 1, Next: &Node{Value: 2, Next: &Node{Value: 3}}},
+			want: "->1->2->3",
+		},
+	}
+
+	for _, tt := range tests {
+		if got := tt.node.String(); got != tt.want {
+			t.Errorf("%s, want %s", got, tt.want)
+		}
+	}
+}
+
 func TestMerge(t *testing.T) {
 	tests := []struct {
 		name string
