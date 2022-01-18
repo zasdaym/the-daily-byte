@@ -1,26 +1,10 @@
 package mergelinkedlists
 
-import "fmt"
-
-// Node represents a linked list node.
-type Node struct {
-	Value int
-	Next  *Node
-}
-
-// String returns string representation of a linked list.
-func (n *Node) String() string {
-	var result string
-	for n != nil {
-		result = fmt.Sprintf("%s->%d", result, n.Value)
-		n = n.Next
-	}
-	return result
-}
+import "github.com/zasdaym/the-daily-byte/linkedlist"
 
 // Merge merges two sorted linked lists in ascending order.
-func Merge(a, b *Node) *Node {
-	var dummyHead Node
+func Merge(a, b *linkedlist.Node) *linkedlist.Node {
+	var dummyHead linkedlist.Node
 	tail := &dummyHead
 	for a != nil && b != nil {
 		if a.Value < b.Value {

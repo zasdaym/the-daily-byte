@@ -1,0 +1,34 @@
+// Package linkedlist provides linked list implementation.
+package linkedlist
+
+import "fmt"
+
+// Node represents a linked list node.
+type Node struct {
+	Value int
+	Next  *Node
+}
+
+// String returns string representation of a linked list.
+func (n *Node) String() string {
+	var result string
+	for n != nil {
+		result = fmt.Sprintf("%s->%d", result, n.Value)
+		n = n.Next
+	}
+	return result
+}
+
+// Equal checks if n is equal with other.
+func (n *Node) Equal(other *Node) bool {
+	if n == nil && other == nil {
+		return true
+	}
+	if n == nil || other == nil {
+		return false
+	}
+	if n.Value != other.Value {
+		return false
+	}
+	return n.Next.Equal(other.Next)
+}

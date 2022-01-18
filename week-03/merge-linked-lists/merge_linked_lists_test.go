@@ -2,73 +2,47 @@ package mergelinkedlists
 
 import (
 	"testing"
+
+	"github.com/zasdaym/the-daily-byte/linkedlist"
 )
-
-func TestNodeString(t *testing.T) {
-	tests := []struct {
-		node *Node
-		want string
-	}{
-		{
-			node: &Node{Value: 1, Next: &Node{Value: 2, Next: &Node{Value: 3}}},
-			want: "->1->2->3",
-		},
-	}
-
-	for _, tt := range tests {
-		if got := tt.node.String(); got != tt.want {
-			t.Errorf("%s, want %s", got, tt.want)
-		}
-	}
-}
 
 func TestMerge(t *testing.T) {
 	tests := []struct {
 		name string
-		a, b *Node
-		want *Node
+		a, b *linkedlist.Node
+		want *linkedlist.Node
 	}{
 		{
 			name: "first list smaller than second list",
-			a:    &Node{Value: 1, Next: &Node{Value: 2, Next: &Node{Value: 3}}},
-			b:    &Node{Value: 4, Next: &Node{Value: 5, Next: &Node{Value: 6}}},
-			want: &Node{Value: 1, Next: &Node{Value: 2, Next: &Node{Value: 3, Next: &Node{Value: 4, Next: &Node{Value: 5, Next: &Node{Value: 6}}}}}},
+			a:    &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3}}},
+			b:    &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 6}}},
+			want: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 6}}}}}},
 		},
 		{
 			name: "zigzag merge with same length",
-			a:    &Node{Value: 1, Next: &Node{Value: 3, Next: &Node{Value: 5}}},
-			b:    &Node{Value: 2, Next: &Node{Value: 4, Next: &Node{Value: 6}}},
-			want: &Node{Value: 1, Next: &Node{Value: 2, Next: &Node{Value: 3, Next: &Node{Value: 4, Next: &Node{Value: 5, Next: &Node{Value: 6}}}}}},
+			a:    &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 5}}},
+			b:    &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 6}}},
+			want: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 6}}}}}},
 		},
 		{
 			name: "first list longer than second list",
-			a:    &Node{Value: 1, Next: &Node{Value: 3, Next: &Node{Value: 5, Next: &Node{Value: 7}}}},
-			b:    &Node{Value: 2, Next: &Node{Value: 4, Next: &Node{Value: 6}}},
-			want: &Node{Value: 1, Next: &Node{Value: 2, Next: &Node{Value: 3, Next: &Node{Value: 4, Next: &Node{Value: 5, Next: &Node{Value: 6, Next: &Node{Value: 7}}}}}}},
+			a:    &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 7}}}},
+			b:    &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 6}}},
+			want: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 6, Next: &linkedlist.Node{Value: 7}}}}}}},
 		},
 		{
 			name: "second list longer than first list",
-			a:    &Node{Value: 1, Next: &Node{Value: 3, Next: &Node{Value: 5}}},
-			b:    &Node{Value: 2, Next: &Node{Value: 4, Next: &Node{Value: 6, Next: &Node{Value: 7}}}},
-			want: &Node{Value: 1, Next: &Node{Value: 2, Next: &Node{Value: 3, Next: &Node{Value: 4, Next: &Node{Value: 5, Next: &Node{Value: 6, Next: &Node{Value: 7}}}}}}},
+			a:    &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 5}}},
+			b:    &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 6, Next: &linkedlist.Node{Value: 7}}}},
+			want: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 6, Next: &linkedlist.Node{Value: 7}}}}}}},
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Merge(tt.a, tt.b); !isEqual(got, tt.want) {
+			if got := Merge(tt.a, tt.b); !got.Equal(tt.want) {
 				t.Errorf("Merge(%s, %s) = %s, want %s", tt.a, tt.b, got, tt.want)
 			}
 		})
 	}
-}
-
-func isEqual(a, b *Node) bool {
-	if a == nil && b == nil {
-		return true
-	}
-	if a == nil || b == nil {
-		return false
-	}
-	return isEqual(a.Next, b.Next)
 }
