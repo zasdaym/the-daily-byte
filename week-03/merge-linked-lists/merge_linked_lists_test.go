@@ -56,19 +56,19 @@ func TestMerge(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Merge(tt.a, tt.b); !IsEqual(got, tt.want) {
+			if got := Merge(tt.a, tt.b); !isEqual(got, tt.want) {
 				t.Errorf("Merge(%s, %s) = %s, want %s", tt.a, tt.b, got, tt.want)
 			}
 		})
 	}
 }
 
-func IsEqual(a, b *Node) bool {
+func isEqual(a, b *Node) bool {
 	if a == nil && b == nil {
 		return true
 	}
 	if a == nil || b == nil {
 		return false
 	}
-	return IsEqual(a.Next, b.Next)
+	return isEqual(a.Next, b.Next)
 }
