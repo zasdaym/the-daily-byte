@@ -58,3 +58,21 @@ func TestNodeEqual(t *testing.T) {
 		})
 	}
 }
+
+func TestNew(t *testing.T) {
+	tests := []struct {
+		values []int
+		want   *linkedlist.Node
+	}{
+		{
+			values: []int{1, 2, 3},
+			want:   &linkedlist.Node{1, &linkedlist.Node{2, &linkedlist.Node{3, nil}}},
+		},
+	}
+
+	for _, tt := range tests {
+		if got := linkedlist.New(tt.values); !got.Equal(tt.want) {
+			t.Errorf("New(%v) = %s, want %s", tt.values, got, tt.want)
+		}
+	}
+}
