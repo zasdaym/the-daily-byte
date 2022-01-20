@@ -15,15 +15,15 @@ func TestRemove(t *testing.T) {
 	}{
 		{
 			name: "value exists",
-			head: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3}}},
+			head: linkedlist.New([]int{1, 2, 3}),
 			n:    3,
-			want: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: nil}},
+			want: linkedlist.New([]int{1, 2}),
 		},
 		{
 			name: "value doesn't exists",
-			head: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3}}},
+			head: linkedlist.New([]int{1, 2, 3}),
 			n:    6,
-			want: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3}}},
+			want: linkedlist.New([]int{1, 2, 3}),
 		},
 	}
 

@@ -14,12 +14,12 @@ func TestMiddle(t *testing.T) {
 	}{
 		{
 			name: "odd number elements",
-			head: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3}}},
+			head: linkedlist.New([]int{1, 2, 3}),
 			want: 2,
 		},
 		{
 			name: "even number elements",
-			head: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 4, Next: nil}}}},
+			head: linkedlist.New([]int{1, 2, 3, 4}),
 			want: 3,
 		},
 	}

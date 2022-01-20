@@ -14,27 +14,27 @@ func TestMerge(t *testing.T) {
 	}{
 		{
 			name: "first list smaller than second list",
-			a:    &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3}}},
-			b:    &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 6}}},
-			want: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 6}}}}}},
+			a:    linkedlist.New([]int{1, 2, 3}),
+			b:    linkedlist.New([]int{4, 5, 6}),
+			want: linkedlist.New([]int{1, 2, 3, 4, 5, 6}),
 		},
 		{
 			name: "zigzag merge with same length",
-			a:    &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 5}}},
-			b:    &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 6}}},
-			want: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 6}}}}}},
+			a:    linkedlist.New([]int{1, 3, 5}),
+			b:    linkedlist.New([]int{2, 4, 6}),
+			want: linkedlist.New([]int{1, 2, 3, 4, 5, 6}),
 		},
 		{
 			name: "first list longer than second list",
-			a:    &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 7}}}},
-			b:    &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 6}}},
-			want: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 6, Next: &linkedlist.Node{Value: 7}}}}}}},
+			a:    linkedlist.New([]int{1, 3, 5, 7}),
+			b:    linkedlist.New([]int{2, 4, 6}),
+			want: linkedlist.New([]int{1, 2, 3, 4, 5, 6, 7}),
 		},
 		{
 			name: "second list longer than first list",
-			a:    &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 5}}},
-			b:    &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 6, Next: &linkedlist.Node{Value: 7}}}},
-			want: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3, Next: &linkedlist.Node{Value: 4, Next: &linkedlist.Node{Value: 5, Next: &linkedlist.Node{Value: 6, Next: &linkedlist.Node{Value: 7}}}}}}},
+			a:    linkedlist.New([]int{1, 3, 5}),
+			b:    linkedlist.New([]int{2, 4, 6, 7}),
+			want: linkedlist.New([]int{1, 2, 3, 4, 5, 6, 7}),
 		},
 	}
 

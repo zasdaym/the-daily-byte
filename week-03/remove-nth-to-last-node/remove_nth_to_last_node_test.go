@@ -3,34 +3,34 @@ package removenthtolastnode
 import (
 	"testing"
 
-	ll "github.com/zasdaym/the-daily-byte/linkedlist"
+	"github.com/zasdaym/the-daily-byte/linkedlist"
 )
 
 func TestRemoveNthLastNode(t *testing.T) {
 	tests := []struct {
-		head *ll.Node
+		head *linkedlist.Node
 		n    int
-		want *ll.Node
+		want *linkedlist.Node
 	}{
 		{
-			head: &ll.Node{1, &ll.Node{2, &ll.Node{3, &ll.Node{4, &ll.Node{5, nil}}}}},
+			head: linkedlist.New([]int{1, 2, 3, 4, 5}),
 			n:    1,
-			want: &ll.Node{1, &ll.Node{2, &ll.Node{3, &ll.Node{4, nil}}}},
+			want: linkedlist.New([]int{1, 2, 3, 4}),
 		},
 		{
-			head: &ll.Node{1, &ll.Node{2, &ll.Node{3, &ll.Node{4, &ll.Node{5, nil}}}}},
+			head: linkedlist.New([]int{1, 2, 3, 4, 5}),
 			n:    4,
-			want: &ll.Node{1, &ll.Node{3, &ll.Node{4, &ll.Node{5, nil}}}},
+			want: linkedlist.New([]int{1, 3, 4, 5}),
 		},
 		{
-			head: &ll.Node{1, &ll.Node{2, &ll.Node{3, &ll.Node{4, &ll.Node{5, nil}}}}},
+			head: linkedlist.New([]int{1, 2, 3, 4, 5}),
 			n:    5,
-			want: &ll.Node{2, &ll.Node{3, &ll.Node{4, &ll.Node{5, nil}}}},
+			want: linkedlist.New([]int{2, 3, 4, 5}),
 		},
 		{
-			head: &ll.Node{1, &ll.Node{2, &ll.Node{3, &ll.Node{4, &ll.Node{5, nil}}}}},
+			head: linkedlist.New([]int{1, 2, 3, 4, 5}),
 			n:    6,
-			want: &ll.Node{1, &ll.Node{2, &ll.Node{3, &ll.Node{4, &ll.Node{5, nil}}}}},
+			want: linkedlist.New([]int{1, 2, 3, 4, 5}),
 		},
 	}
 
