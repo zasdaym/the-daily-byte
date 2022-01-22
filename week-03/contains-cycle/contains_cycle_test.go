@@ -24,7 +24,7 @@ func TestContainsCycle(t *testing.T) {
 		third.Next = first
 		want := true
 		if got := ContainsCycle(first); got != want {
-			t.Errorf("ContainsCycle(%s) = %v, want %v", first, got, want)
+			t.Errorf("got %v, want %v", got, want)
 		}
 	})
 }
