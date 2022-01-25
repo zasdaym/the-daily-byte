@@ -1,1 +1,5 @@
-coverage.txt
+/coverage.txt
+/.coverage
+/.venv
+__pycache__/
+.pytest_cache/
