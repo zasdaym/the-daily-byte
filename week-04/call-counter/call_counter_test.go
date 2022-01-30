@@ -5,7 +5,7 @@ import (
 )
 
 func TestCallCounter(t *testing.T) {
-	counter := &CallCounter{}
+	counter := New()
 	tests := []struct {
 		timestamp int
 		want      int

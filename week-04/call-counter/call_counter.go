@@ -1,25 +1,25 @@
 package callcounter
 
+import (
+	"container/list"
+)
+
 type CallCounter struct {
-	calls []call
+	calls *list.List
 }
 
-type call struct {
-	timestamp int
-	expired   bool
+func New() *CallCounter {
+	return &CallCounter{
+		calls: list.New(),
+	}
 }
 
 const timeoutMS = 3000
 
 func (c *CallCounter) Ping(timestamp int) int {
-	c.calls = append(c.calls, call{timestamp: timestamp})
-	var result int
-	for i := range c.calls {
-		if timestamp-c.calls[len(c.calls)-1-i].timestamp > timeoutMS {
-			c.calls[len(c.calls)-1-i].expired = true
-			break
-		}
-		result++
+	c.calls.PushBack(timestamp)
+	for timestamp-c.calls.Front().Value.(int) > timeoutMS {
+		c.calls.Remove(c.calls.Front())
 	}
-	return result
+	return c.calls.Len()
 }
