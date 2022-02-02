@@ -9,7 +9,7 @@ type Node struct {
 	Next  *Node
 }
 
-// New creates a new linked list from given values.
+// New creates a new linked list node from given values.
 func New(values []int) *Node {
 	var dummyHead Node
 	curr := &dummyHead
