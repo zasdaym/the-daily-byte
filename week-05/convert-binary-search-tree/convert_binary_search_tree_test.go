@@ -13,6 +13,11 @@ func TestConvert(t *testing.T) {
 		want *linkedlist.Node
 	}{
 		{
+			name: "nil tree",
+			root: nil,
+			want: linkedlist.New(nil),
+		},
+		{
 			name: "one level",
 			root: &TreeNode{
 				Value: 5,
