@@ -35,5 +35,8 @@ func sameTree(a, b *TreeNode) bool {
 	if a == nil || b == nil {
 		return false
 	}
+	if a.Value != b.Value {
+		return false
+	}
 	return sameTree(a.Left, b.Left) && sameTree(a.Right, b.Right)
 }
