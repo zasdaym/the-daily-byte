@@ -9,7 +9,7 @@ import (
 func TestMiddle(t *testing.T) {
 	tests := []struct {
 		name string
-		head *linkedlist.Node
+		head *linkedlist.Node[int]
 		want int
 	}{
 		{

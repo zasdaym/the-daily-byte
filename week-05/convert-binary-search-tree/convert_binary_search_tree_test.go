@@ -10,12 +10,12 @@ func TestConvert(t *testing.T) {
 	tests := []struct {
 		name string
 		root *TreeNode
-		want *linkedlist.Node
+		want *linkedlist.Node[int]
 	}{
 		{
 			name: "nil tree",
 			root: nil,
-			want: linkedlist.New(nil),
+			want: linkedlist.New[int](nil),
 		},
 		{
 			name: "one level",

@@ -9,7 +9,7 @@ type TreeNode struct {
 	Left, Right *TreeNode
 }
 
-func Convert(root *TreeNode) *linkedlist.Node {
+func Convert(root *TreeNode) *linkedlist.Node[int] {
 	values := getValues(root)
 	return linkedlist.New(values)
 }

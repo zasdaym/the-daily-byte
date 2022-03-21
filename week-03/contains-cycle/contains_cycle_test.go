@@ -17,9 +17,9 @@ func TestContainsCycle(t *testing.T) {
 
 	t.Run("with cycle", func(t *testing.T) {
 		var (
-			third  = &linkedlist.Node{Value: 3}
-			second = &linkedlist.Node{Value: 2, Next: third}
-			first  = &linkedlist.Node{Value: 1, Next: second}
+			third  = &linkedlist.Node[int]{Value: 3}
+			second = &linkedlist.Node[int]{Value: 2, Next: third}
+			first  = &linkedlist.Node[int]{Value: 1, Next: second}
 		)
 		third.Next = first
 		want := true

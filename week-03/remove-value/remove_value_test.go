@@ -9,9 +9,9 @@ import (
 func TestRemove(t *testing.T) {
 	tests := []struct {
 		name string
-		head *linkedlist.Node
+		head *linkedlist.Node[int]
 		n    int
-		want *linkedlist.Node
+		want *linkedlist.Node[int]
 	}{
 		{
 			name: "value exists",

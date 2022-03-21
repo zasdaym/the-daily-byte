@@ -3,8 +3,8 @@ package mergelinkedlists
 import "github.com/zasdaym/the-daily-byte/linkedlist"
 
 // Merge merges two sorted linked lists in ascending order.
-func Merge(a, b *linkedlist.Node) *linkedlist.Node {
-	var dummyHead linkedlist.Node
+func Merge(a, b *linkedlist.Node[int]) *linkedlist.Node[int] {
+	var dummyHead linkedlist.Node[int]
 	tail := &dummyHead
 	for a != nil && b != nil {
 		if a.Value < b.Value {

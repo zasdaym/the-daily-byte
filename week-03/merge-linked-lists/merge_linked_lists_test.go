@@ -9,8 +9,8 @@ import (
 func TestMerge(t *testing.T) {
 	tests := []struct {
 		name string
-		a, b *linkedlist.Node
-		want *linkedlist.Node
+		a, b *linkedlist.Node[int]
+		want *linkedlist.Node[int]
 	}{
 		{
 			name: "first list smaller than second list",

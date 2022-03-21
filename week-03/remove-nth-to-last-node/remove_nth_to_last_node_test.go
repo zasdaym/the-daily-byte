@@ -8,9 +8,9 @@ import (
 
 func TestRemoveNthLastNode(t *testing.T) {
 	tests := []struct {
-		head *linkedlist.Node
+		head *linkedlist.Node[int]
 		n    int
-		want *linkedlist.Node
+		want *linkedlist.Node[int]
 	}{
 		{
 			head: linkedlist.New([]int{1, 2, 3, 4, 5}),

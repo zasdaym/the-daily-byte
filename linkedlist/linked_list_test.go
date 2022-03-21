@@ -8,11 +8,11 @@ import (
 
 func TestNodeString(t *testing.T) {
 	tests := []struct {
-		node *linkedlist.Node
+		node *linkedlist.Node[int]
 		want string
 	}{
 		{
-			node: &linkedlist.Node{Value: 1, Next: &linkedlist.Node{Value: 2, Next: &linkedlist.Node{Value: 3}}},
+			node: &linkedlist.Node[int]{Value: 1, Next: &linkedlist.Node[int]{Value: 2, Next: &linkedlist.Node[int]{Value: 3}}},
 			want: "->1->2->3",
 		},
 	}
@@ -27,25 +27,25 @@ func TestNodeString(t *testing.T) {
 func TestNodeEqual(t *testing.T) {
 	tests := []struct {
 		name string
-		a, b *linkedlist.Node
+		a, b *linkedlist.Node[int]
 		want bool
 	}{
 		{
 			name: "similar lists",
-			a:    &linkedlist.Node{1, &linkedlist.Node{2, &linkedlist.Node{3, nil}}},
-			b:    &linkedlist.Node{1, &linkedlist.Node{2, &linkedlist.Node{3, nil}}},
+			a:    &linkedlist.Node[int]{1, &linkedlist.Node[int]{2, &linkedlist.Node[int]{3, nil}}},
+			b:    &linkedlist.Node[int]{1, &linkedlist.Node[int]{2, &linkedlist.Node[int]{3, nil}}},
 			want: true,
 		},
 		{
 			name: "same length with different value",
-			a:    &linkedlist.Node{1, &linkedlist.Node{2, &linkedlist.Node{3, nil}}},
-			b:    &linkedlist.Node{1, &linkedlist.Node{4, &linkedlist.Node{5, nil}}},
+			a:    &linkedlist.Node[int]{1, &linkedlist.Node[int]{2, &linkedlist.Node[int]{3, nil}}},
+			b:    &linkedlist.Node[int]{1, &linkedlist.Node[int]{4, &linkedlist.Node[int]{5, nil}}},
 			want: false,
 		},
 		{
 			name: "different length",
-			a:    &linkedlist.Node{1, &linkedlist.Node{2, &linkedlist.Node{3, &linkedlist.Node{4, nil}}}},
-			b:    &linkedlist.Node{1, &linkedlist.Node{2, &linkedlist.Node{3, nil}}},
+			a:    &linkedlist.Node[int]{1, &linkedlist.Node[int]{2, &linkedlist.Node[int]{3, &linkedlist.Node[int]{4, nil}}}},
+			b:    &linkedlist.Node[int]{1, &linkedlist.Node[int]{2, &linkedlist.Node[int]{3, nil}}},
 			want: false,
 		},
 	}
@@ -62,11 +62,11 @@ func TestNodeEqual(t *testing.T) {
 func TestNew(t *testing.T) {
 	tests := []struct {
 		values []int
-		want   *linkedlist.Node
+		want   *linkedlist.Node[int]
 	}{
 		{
 			values: []int{1, 2, 3},
-			want:   &linkedlist.Node{1, &linkedlist.Node{2, &linkedlist.Node{3, nil}}},
+			want:   &linkedlist.Node[int]{1, &linkedlist.Node[int]{2, &linkedlist.Node[int]{3, nil}}},
 		},
 	}
 

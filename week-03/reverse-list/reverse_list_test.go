@@ -9,8 +9,8 @@ import (
 func TestReverse(t *testing.T) {
 	tests := []struct {
 		name string
-		head *linkedlist.Node
-		want *linkedlist.Node
+		head *linkedlist.Node[int]
+		want *linkedlist.Node[int]
 	}{
 		{
 			name: "single node",

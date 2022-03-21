@@ -2,8 +2,8 @@ package removenthtolastnode
 
 import "github.com/zasdaym/the-daily-byte/linkedlist"
 
-func RemoveNthLastNode(head *linkedlist.Node, n int) *linkedlist.Node {
-	dummyHead := linkedlist.Node{
+func RemoveNthLastNode(head *linkedlist.Node[int], n int) *linkedlist.Node[int] {
+	dummyHead := linkedlist.Node[int]{
 		Next: head,
 	}
 	back, front := &dummyHead, &dummyHead
